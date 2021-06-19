@@ -1,5 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
 opt = Options()
@@ -22,9 +25,9 @@ def google_signin():
     email = driver.find_element_by_id("identifierId")
     email.send_keys("cse17jn1a0575@gmail.com")
     driver.find_element_by_xpath('//*[@id="identifierNext"]/div/button/span').click()
-    time.sleep(3)
+    time.sleep(5)
     password = driver.find_element_by_name("password")
-    password.send_keys("password") # replace the password
+    password.send_keys("svcn575#@!") # replace the password
     driver.find_element_by_xpath('//*[@id="passwordNext"]/div/button').click()
     time.sleep(10)
 
@@ -39,7 +42,7 @@ def camera_off():
 
 def meet_join():
     meet_id = driver.find_element_by_xpath('//*[@id="i3"]')
-    meet_id.send_keys("kqd cwek rrr")
+    meet_id.send_keys("amz gmgq ieh")
     driver.find_element_by_xpath('//*[@id="yDmH0d"]/c-wiz/div/div[2]/div/div[1]/div[3]/div/div[2]/div[2]/button/span').click()
     time.sleep(5)
     mic_off()
@@ -52,5 +55,11 @@ def meet_join():
 if __name__ == '__main__':
     google_signin()
     meet_join()
-    time.sleep(80)
-    number = driver.find_element_by_class_name("uGOf1d")
+    time.sleep(100)
+    people = driver.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[9]/div[3]/div[10]/div[3]/div[2]/div/div/div[2]/div/div')
+    while int(people.text) != 0:
+        if int(people.text) < 15:
+            driver.find_element_by_xpath('//*[@id="ow3"]/div[1]/div/div[9]/div[3]/div[10]/div[2]/div/div[6]/span/button').click()
+            break
+        else:
+            time.sleep(10)
